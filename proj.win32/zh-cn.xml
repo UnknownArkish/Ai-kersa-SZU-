@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dict>
+  <key>strike</key>
+  <string>打击</string>
+  <key>strike_info</key>
+  <string>对指定敌人造成2点伤害</string>
+</dict>

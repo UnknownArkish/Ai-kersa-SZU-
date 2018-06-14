@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dict>
+  <key>strike</key>
+  <string>Strike</string>
+  <key>strike_info</key>
+  <string>Inflict 5 damage on the designated enemy</string>
+  <key>strike_cost</key>
+  <string>1</string>
+
+  <key>defend</key>
+  <string>Defend</string>
+  <key>defend_info</key>
+  <string>Get 5 Armor</string>
+  <key>defend_cost</key>
+  <string>1</string>
+</dict>

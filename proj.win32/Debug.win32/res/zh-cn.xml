@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dict>
+  <key>card_strike_name</key>
+  <string>打击</string>
+  <key>card_strike_info</key>
+  <string>对指定敌人造成5点伤害</string>
+  <key>card_strike_cost</key>
+  <string>1</string>
+
+  <key>card_defend_name</key>
+  <string>防御</string>
+  <key>card_defend_info</key>
+  <string>增加5点护甲</string>
+  <key>card_defend_cost</key>
+  <string>1</string>
+
+  <!--<key>state_power_change_name</key>
+  <string>改变力量</string>-->
+  <key>state_power_change_info</key>
+  <string>每回合改变力量：</string>
+</dict>

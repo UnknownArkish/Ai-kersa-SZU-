@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\card">
+      <UniqueIdentifier>{99760f0b-d594-4da3-8dd9-0ff9e9108ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\util">
+      <UniqueIdentifier>{0fb3f5a6-ded7-4646-a004-740d60ebc814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{954fe76a-1f34-4eb5-997f-55db2b4834ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\.main">
+      <UniqueIdentifier>{e0cfca96-55f4-4e48-90af-11076d1afdc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\effect">
+      <UniqueIdentifier>{67900063-31ee-4d45-864a-d0d9331ef13a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\character">
+      <UniqueIdentifier>{77bc8e3f-c956-4ad7-955f-e94205c01538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\character\player">
+      <UniqueIdentifier>{2a1d45f4-b5dc-49e2-84fa-e91b9f001aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\character\enemy">
+      <UniqueIdentifier>{5471f10b-1b7a-4e8d-8419-9b74c674e40c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".old">
+      <UniqueIdentifier>{6018f05a-6e10-42c3-ad50-24dfc8bc106b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\state">
+      <UniqueIdentifier>{0a4f58bf-1d7c-4ea9-a7ab-a19317ca234c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\effect\effect_child">
+      <UniqueIdentifier>{da5e5ea1-e45c-4601-8a1b-273719298c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\card\system">
+      <UniqueIdentifier>{ef79c81f-770c-4202-aba7-d8706d078087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\util\data">
+      <UniqueIdentifier>{4e22ba7a-fcc3-41e1-8a65-a811cd6f0346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\util\sqlite3">
+      <UniqueIdentifier>{d344c655-2163-4609-aa5a-7849982b1650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\state\state_child">
+      <UniqueIdentifier>{77a214ed-e62e-4592-b760-b4f09276fc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\card\layer">
+      <UniqueIdentifier>{447a70fd-b666-47f6-a5be-596f404834fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ai">
+      <UniqueIdentifier>{649f162a-9684-4e85-a0c3-f6d5faf7fcda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseCard.cpp">
+      <Filter>src\card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src\.main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseEffect.cpp">
+      <Filter>src\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseState.cpp">
+      <Filter>src\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseCharacter.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player.cpp">
+      <Filter>src\character\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseEnemy.cpp">
+      <Filter>src\character\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CardSystem.cpp">
+      <Filter>src\card\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite3\sqlite3.c">
+      <Filter>src\util\sqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConditionEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConditionRatioEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropertyChangeEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropertyChangeState.cpp">
+      <Filter>src\state\state_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CardLayer_.cpp">
+      <Filter>src\card\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameSceneDemo.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DrawCardEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GeneralState.cpp">
+      <Filter>src\state\state_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StateEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseBehaviour.cpp">
+      <Filter>src\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIManager.cpp">
+      <Filter>src\ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DamageEffect.cpp">
+      <Filter>src\effect\effect_child</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CardDisplayLayer.cpp">
+      <Filter>src\card\layer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseCard.h">
+      <Filter>src\card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameConfig.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src\.main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseEffect.h">
+      <Filter>src\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseEnemy.h">
+      <Filter>src\character\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseState.h">
+      <Filter>src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseCharacter.h">
+      <Filter>src\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player.h">
+      <Filter>src\character\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EffectHeader.h">
+      <Filter>src\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CardSystem.h">
+      <Filter>src\card\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite3\sqlite3.h">
+      <Filter>src\util\sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite3\sqlite3ext.h">
+      <Filter>src\util\sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StateHeader.h">
+      <Filter>src\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConditionEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConditionRatioEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropertyChangeEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropertyChangeState.h">
+      <Filter>src\state\state_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CardLayer_.h">
+      <Filter>src\card\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Target.h">
+      <Filter>src\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameSceneDemo.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DrawCardEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GeneralState.h">
+      <Filter>src\state\state_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StateEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseBehaviour.h">
+      <Filter>src\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIManager.h">
+      <Filter>src\ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DamageEffect.h">
+      <Filter>src\effect\effect_child</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CardDisplayLayer.h">
+      <Filter>src\card\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CardID.h">
+      <Filter>src\card</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\res\sql\sql.db">
+      <Filter>src\util\data</Filter>
+    </None>
+  </ItemGroup>
+</Project>

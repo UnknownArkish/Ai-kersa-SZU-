@@ -165,6 +165,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\DamageEffect.cpp" />
     <ClCompile Include="..\Classes\DrawCardEffect.cpp" />
     <ClCompile Include="..\Classes\GameSceneDemo.cpp" />
+    <ClCompile Include="..\Classes\GameStartScene.cpp" />
     <ClCompile Include="..\Classes\GeneralState.cpp" />
     <ClCompile Include="..\Classes\Player.cpp" />
     <ClCompile Include="..\Classes\PropertyChangeEffect.cpp" />
@@ -193,6 +194,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\EffectHeader.h" />
     <ClInclude Include="..\Classes\GameConfig.h" />
     <ClInclude Include="..\Classes\GameSceneDemo.h" />
+    <ClInclude Include="..\Classes\GameStartScene.h" />
     <ClInclude Include="..\Classes\GeneralState.h" />
     <ClInclude Include="..\Classes\Player.h" />
     <ClInclude Include="..\Classes\PropertyChangeEffect.h" />

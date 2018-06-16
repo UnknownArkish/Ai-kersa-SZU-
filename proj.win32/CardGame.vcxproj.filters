@@ -132,6 +132,9 @@
     <ClCompile Include="..\Classes\CardDisplayLayer.cpp">
       <Filter>src\card\layer</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameStartScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CardID.h">
       <Filter>src\card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameStartScene.h">
+      <Filter>src\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,11 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include"DemoScene.h"
-#include"DemoScene_.h"
-#include"TestCardLayer.h"
+//#include "HelloWorldScene.h"
+//#include"DemoScene.h"
+//#include"DemoScene_.h"
+//#include"TestCardLayer.h"
 #include"GameSceneDemo.h"
 #include"TestCardDiplayScene.h"
+#include"GameStartScene.h"
 
 USING_NS_CC;
 
@@ -32,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("CardGame", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("Ai'kersa", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
         director->setOpenGLView(glview);
     }
 
@@ -47,11 +48,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = GameSceneDemo::createScene();
+    auto scene = GameStartScene::createScene();
 	//auto scene = TestCardDisplayScene::createScene();
 
     // run
     director->runWithScene(scene);
+
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sound/bgm.mp3");
 
     return true;
 }

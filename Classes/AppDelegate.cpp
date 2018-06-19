@@ -6,6 +6,7 @@
 #include"GameSceneDemo.h"
 #include"TestCardDiplayScene.h"
 #include"GameStartScene.h"
+#include"DialogScene.h"
 
 USING_NS_CC;
 

@@ -21,6 +21,7 @@ private:
 private:
 	Sprite * m_background;
 	Sprite * m_logo;
+	LayerColor* m_mask_layer;
 };
 
 

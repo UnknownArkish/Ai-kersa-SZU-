@@ -135,6 +135,9 @@
     <ClCompile Include="..\Classes\GameStartScene.cpp">
       <Filter>src\scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DialogScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -225,6 +228,9 @@
       <Filter>src\card</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameStartScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DialogScene.h">
       <Filter>src\scene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -61,6 +61,9 @@
     <Filter Include="src\ai">
       <UniqueIdentifier>{649f162a-9684-4e85-a0c3-f6d5faf7fcda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\scene\chapter">
+      <UniqueIdentifier>{987f9431-c54c-4c04-b864-087e5ea2d38a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,6 +140,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\DialogScene.cpp">
       <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Chapter0Scene.cpp">
+      <Filter>src\scene\chapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Chapter1Scene.cpp">
+      <Filter>src\scene\chapter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +241,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DialogScene.h">
       <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chapter0Scene.h">
+      <Filter>src\scene\chapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chapter1Scene.h">
+      <Filter>src\scene\chapter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

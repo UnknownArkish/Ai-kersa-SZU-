@@ -2,31 +2,31 @@
 #include"sqlite3\sqlite3.h"
 #include"GameStartScene.h"
 
-Scene* DialogScene::createScene(std::string dialog_form_name) {
-	Scene* scene = Scene::create();
-	Layer* layer = DialogScene::create(dialog_form_name);
-	scene->addChild(layer);
-	return scene;
-}
-Scene* DialogScene::createScene() {
-	Scene* scene = Scene::create();
-	Layer* layer = DialogScene::create("dialog_demo");
-	scene->addChild(layer);
-	return scene;
-}
-
-DialogScene* DialogScene::create(std::string dialog_form_name) {
-	DialogScene* pRet = new(std::nothrow)DialogScene();
-	if (pRet && pRet->init(dialog_form_name)) {
-		pRet->autorelease();
-		return pRet;
-	}
-	else {
-		delete pRet;
-		pRet = NULL;
-		return NULL;
-	}
-}
+//Scene* DialogScene::createScene(std::string dialog_form_name) {
+//	Scene* scene = Scene::create();
+//	Layer* layer = DialogScene::create(dialog_form_name);
+//	scene->addChild(layer);
+//	return scene;
+//}
+//Scene* DialogScene::createScene() {
+//	Scene* scene = Scene::create();
+//	Layer* layer = DialogScene::create("dialog_demo");
+//	scene->addChild(layer);
+//	return scene;
+//}
+//
+//DialogScene* DialogScene::create(std::string dialog_form_name) {
+//	DialogScene* pRet = new(std::nothrow)DialogScene();
+//	if (pRet && pRet->init(dialog_form_name)) {
+//		pRet->autorelease();
+//		return pRet;
+//	}
+//	else {
+//		delete pRet;
+//		pRet = NULL;
+//		return NULL;
+//	}
+//}
 
 bool DialogScene::init( std::string dialog_form_name ) {
 	if (!Layer::init()) {
@@ -131,51 +131,45 @@ void DialogScene::onTouchEnded(Touch* pTouch, Event* pEvent) {
 	
 	//更新背景
 	if ( m_pre_background_picPath != m_background_picPaths.at(m_counter)) {
-		auto func = [&]() {
-			auto background_sprite = Sprite::create(m_background_picPaths.at(m_counter));
-			m_background_sprite->setTexture(background_sprite->getTexture());	//更换贴图
-			float xScale = m_visibleSize.width / background_sprite->getContentSize().width;
-			float yScale = m_visibleSize.height / background_sprite->getContentSize().height;
-			m_background_sprite->setScale(xScale > yScale ? xScale : yScale);
-		};
-		m_mask_layer->runAction( Sequence::create(FadeIn::create(0.8f) ,DelayTime::create(0.5f), CallFunc::create(func), FadeOut::create(1.0f) , NULL ));
-
-	}
-	else {
 		m_pre_background_picPath = m_background_picPaths.at(m_counter);
+		auto func = [&]() {
+			Texture2D* texture = Director::getInstance()->getTextureCache()->getTextureForKey(m_background_picPaths.at(m_counter));
+			m_background_sprite->setTexture(texture);	//更换贴图
+		};
+		m_mask_layer->runAction( Sequence::create(FadeIn::create(1.0f) ,CallFunc::create(func), FadeOut::create(1.0f) , NULL ));
+
 	}
 
 	//更新人物
 	if (m_pre_character_picPath != m_character_picPaths.at(m_counter)) {
-		auto character_sprite = Sprite::create(m_character_picPaths.at(m_counter));
-		m_character_sprite->setTexture(character_sprite->getTexture());	//更换贴图
-		Size character_size = Size(m_visibleSize.width * dialog_character_size.width, m_visibleSize.height * dialog_character_size.height);
-		float xScale = character_size.width / m_character_sprite->getContentSize().width;
-		float yScale = character_size.height / m_character_sprite->getContentSize().height;
-		m_character_sprite->setScale(xScale > yScale ? xScale : yScale);
-	}
-	else {
 		m_pre_character_picPath = m_character_picPaths.at(m_counter);
+
+		auto func = [&]() {
+			Texture2D* texture = Director::getInstance()->getTextureCache()->getTextureForKey(m_character_picPaths.at(m_counter));
+			m_character_sprite->setTexture(texture);
+		};
+		m_character_sprite->runAction(Sequence::create(FadeOut::create(0.18f), CallFunc::create(func), FadeIn::create(0.30f), NULL));	
 	}
 
 	//更新名字
 	if (m_pre_name != m_names.at(m_counter)) {
+		m_pre_name = m_names.at(m_counter);
+
 		m_name_label->setString(m_names.at(m_counter));
 	}
-	else {
-		m_pre_name = m_names.at(m_counter);
-	}
+
 	//更新Dialog
 	m_n = 0;
 	m_is_dialog_showing = true;
 	m_dialog_label->runAction( RepeatForever::create(
-		Sequence::create( CallFunc::create( CC_CALLBACK_0( DialogScene::toUpdateDialog,this) ) , DelayTime::create(0.06f) , NULL ) 
+		Sequence::create( CallFunc::create( CC_CALLBACK_0( DialogScene::toUpdateDialog,this) ) , DelayTime::create(0.025f) , NULL ) 
 	) );
 }
 
 void DialogScene::toUpdateDialog() {
 	std::string dialog = m_dialogs.at(m_counter);
 	if (m_n > dialog.size() ) {
+		m_dialog_label->setString(dialog);
 		m_dialog_label->stopAllActions();
 		m_is_dialog_showing = false;
 		return;
@@ -189,15 +183,6 @@ void DialogScene::toUpdateDialog() {
 		m_n = dialog.size()+1;
 	}
 }
-void DialogScene::endDialogScene(Ref* ref) {
-	//切换场景
-	auto func = []() {
-		CCLOG("Replacing Scene...");
-		Director::getInstance()->replaceScene(GameStartScene::createScene());
-	};
-	m_mask_layer->runAction(Sequence::create(FadeIn::create(1.0f),/* DelayTime::create(0.2f),*/ CallFunc::create(func), NULL));
-}
-
 
 bool DialogScene::initDialogFromSQL(std::string dialog_form_name) {
 
@@ -232,5 +217,13 @@ bool DialogScene::initDialogFromSQL(std::string dialog_form_name) {
 		m_names.push_back(name);
 		m_dialogs.push_back(dialog);
 	}
+	auto text_cache = _director->getTextureCache();
+	for (std::string character_textute : m_character_picPaths) {
+		text_cache->addImage(character_textute);
+	}
+	for (std::string bg_texture : m_background_picPaths) {
+		text_cache->addImage(bg_texture);
+	}
+
 	return true;
 }

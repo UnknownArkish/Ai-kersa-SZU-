@@ -160,6 +160,8 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\CardDisplayLayer.cpp" />
     <ClCompile Include="..\Classes\CardLayer_.cpp" />
     <ClCompile Include="..\Classes\CardSystem.cpp" />
+    <ClCompile Include="..\Classes\Chapter0Scene.cpp" />
+    <ClCompile Include="..\Classes\Chapter1Scene.cpp" />
     <ClCompile Include="..\Classes\ConditionEffect.cpp" />
     <ClCompile Include="..\Classes\ConditionRatioEffect.cpp" />
     <ClCompile Include="..\Classes\DamageEffect.cpp" />
@@ -188,6 +190,8 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\CardID.h" />
     <ClInclude Include="..\Classes\CardLayer_.h" />
     <ClInclude Include="..\Classes\CardSystem.h" />
+    <ClInclude Include="..\Classes\Chapter0Scene.h" />
+    <ClInclude Include="..\Classes\Chapter1Scene.h" />
     <ClInclude Include="..\Classes\ConditionEffect.h" />
     <ClInclude Include="..\Classes\ConditionRatioEffect.h" />
     <ClInclude Include="..\Classes\DamageEffect.h" />

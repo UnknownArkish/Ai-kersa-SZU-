@@ -1,6 +1,7 @@
 #include"GameStartScene.h"
 #include"GameSceneDemo.h"
 #include"DialogScene.h"
+#include"Chapter0Scene.h"
 
 Scene* GameStartScene::createScene() {
 	Scene* scene = Scene::create();
@@ -51,12 +52,12 @@ bool GameStartScene::init() {
 
 void GameStartScene::menuItemCallback(Ref* pSender) {
 	float time = 1.8f;
-	auto mask_layer = m_mask_layer;
+
 	auto func = [&]() {
-		mask_layer->runAction(EaseSineOut::create(FadeIn::create(time)));
+		m_mask_layer->runAction(EaseSineOut::create(FadeIn::create(time)));
 	};
-	auto func_ = []() {
-		Director::getInstance()->replaceScene(DialogScene::createScene());
+	auto func_ = [&]() {
+		Director::getInstance()->replaceScene( Chapter0Scene::createScene() );
 	};
 
 	MenuItemFont* item = (MenuItemFont*)pSender;
@@ -81,7 +82,7 @@ void GameStartScene::menuItemCallback(Ref* pSender) {
 
 void GameStartScene::onEnterTransitionDidFinish() {
 	Layer::onEnterTransitionDidFinish();
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/bgm.mp3" , true);
+	SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/start_scene_bgm.mp3" , true);
 }
 void GameStartScene::onExitTransitionDidStart() {
 	Layer::onExitTransitionDidStart();

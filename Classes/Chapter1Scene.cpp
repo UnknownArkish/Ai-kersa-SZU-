@@ -1,5 +1,6 @@
 #include"Chapter1Scene.h"
 #include"GameStartScene.h"
+#include"GameSceneDemo.h"
 
 Scene* Chapter1Scene::createScene() {
 	Scene* scene = Scene::create();
@@ -19,7 +20,7 @@ void Chapter1Scene::endDialogScene(Ref* ref) {
 	//ÇÐ»»³¡¾°
 	auto func = [&]() {
 		CCLOG("Replacing Scene...");
-		Director::getInstance()->replaceScene(GameStartScene::createScene());	//Ìæ»»³ÉÓÎÏ·³¡¾°
+		Director::getInstance()->replaceScene(GameSceneDemo::createScene());	//Ìæ»»³ÉÓÎÏ·³¡¾°
 	};
 	m_mask_layer->runAction(Sequence::create(FadeIn::create(1.0f),/* DelayTime::create(0.2f),*/ CallFunc::create(func), NULL));
 }

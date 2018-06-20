@@ -15,19 +15,27 @@ bool GameSceneDemo::init() {
 
 	m_current_rounds = 1;
 
+	//添加背景
+	Sprite* background = Sprite::create("background/forest.png");
+	float xScale = m_visibleSize.width / background->getContentSize().width;
+	float yScale = m_visibleSize.height / background->getContentSize().height;
+	background->setScale(xScale > yScale ? xScale : yScale);
+	background->setPosition(m_visibleSize.width / 2, m_visibleSize.height / 2);
+	this->addChild(background);
+
 	//初始化玩家
 	m_player = Player::create("character/player.png", 80, 0, 0, 0, 0, 3);
-	m_player->setPosition( m_visibleSize.width * 1 / 4 , m_visibleSize.height / 2 );
+	m_player->setPosition( m_visibleSize.width * 3 / 13 , m_visibleSize.height * 6.5 / 13 );
 	this->addChild(m_player , 0 , "player");
 
 	//初始化敌人1
 	auto enemy_1 = BaseEnemy::create("character/enemy.png", 100, 0, 0, 0 , EnemyType::Demo_Enemy);
-	enemy_1->setPosition(m_visibleSize.width * 3 / 4, m_visibleSize.height / 2);
+	enemy_1->setPosition(m_visibleSize.width * 8 / 13, m_visibleSize.height * 6.5 / 13);
 	this->addChild(enemy_1);
 	m_enemys.pushBack(enemy_1);
 
 	auto enemy_2 = BaseEnemy::create("character/enemy.png", 100, 0, 0, 0 , EnemyType::Demo_Enemy);
-	enemy_2->setPosition(m_visibleSize.width * 2 / 4, m_visibleSize.height / 2);
+	enemy_2->setPosition(m_visibleSize.width * 11 / 13, m_visibleSize.height * 6.5 / 13);
 	this->addChild(enemy_2);
 	m_enemys.pushBack(enemy_2);
 

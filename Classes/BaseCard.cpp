@@ -25,6 +25,8 @@ bool BaseCard::init(CardID cardID, std::string name, std::string info , std::str
 	if (!Node::init()) {	//初始化父类
 		return false;
 	}
+	Size visibleSize = _director->getVisibleSize();
+
 	//卡牌图案
 	m_cardSprite = Sprite::create(picPath);
 	this->addChild(m_cardSprite);
@@ -35,25 +37,46 @@ bool BaseCard::init(CardID cardID, std::string name, std::string info , std::str
 	m_cardCost = cost;
 	m_pre_cardCost = Value(m_cardCost).asInt();
 
+	LayerColor* name_mask_layer = LayerColor::create(Color4B(255, 255, 255, 180), 
+		m_cardSprite->getContentSize().width * 0.85, m_cardSprite->getContentSize().width * 0.24);
+	name_mask_layer->setPosition(-m_cardSprite->getContentSize().width / 2 + (m_cardSprite->getContentSize().width - name_mask_layer->getContentSize().width) / 2, 
+		+ m_cardSprite->getContentSize().height / 2 * 6 / 13 );
+	this->addChild(name_mask_layer);
+
 
 	//初始化名字Label
-	m_cardName_label = Label::create(m_cardName, "Arical", 32);
-	m_cardName_label->setPosition( 0, m_cardSprite->getContentSize().height * 3 / 8 );
-	this->addChild(m_cardName_label);
-	
+	m_cardName_label = Label::create(m_cardName, "Arical", 26);
+	m_cardName_label->setColor(Color3B(48, 48, 84));
+	m_cardName_label->setPosition( name_mask_layer->getContentSize().width/2, name_mask_layer->getContentSize().height/2 );
+	name_mask_layer->addChild(m_cardName_label);
+
+	//初始化LayerColor
+	LayerColor* picture_mask_layer = LayerColor::create(Color4B::WHITE , m_cardSprite->getContentSize().width * 0.85 , m_cardSprite->getContentSize().width * 0.35 );
+	picture_mask_layer->setPosition( -m_cardSprite->getContentSize().width / 2 + ( m_cardSprite->getContentSize().width - picture_mask_layer->getContentSize().width) / 2, +15 );
+	//this->addChild(picture_mask_layer);
+
+
 	//初始化说明Label
-	m_cardInfo_label = Label::create(m_cardInfo, "Arical", 24);
+	m_cardInfo_label = Label::create(m_cardInfo, "Arical", 22);
 	m_cardInfo_label->setAnchorPoint(Point(0.5, 1));
+	m_cardInfo_label->setPositionY( m_cardSprite->getContentSize().height * 1 / 16);
 	m_cardInfo_label->setLineBreakWithoutSpace(true);
-	m_cardInfo_label->setWidth(m_cardSprite->getContentSize().width - 10);
+	m_cardInfo_label->setWidth(m_cardSprite->getContentSize().width - 16);
 	m_cardInfo_label->setAlignment(CCTextAlignment::CENTER);
 	this->addChild(m_cardInfo_label);
 
 	//updateCardInfo();
 
+	//费用圆形Sprite
+	Sprite* bg_cost_circle = Sprite::create("card/circle.png");
+	bg_cost_circle->setPosition( - m_cardSprite->getContentSize().width / 2 * 53 / 67 , m_cardSprite->getContentSize().height / 2 * 58 / 67 );
+	bg_cost_circle->setOpacity(225);
+	this->addChild(bg_cost_circle);
+
 	//初始化费用Label
 	m_cardCost_label = Label::create( m_cardCost, "Arical", 24);
-	m_cardCost_label->setPosition( -m_cardSprite->getContentSize().width * 3 / 8, m_cardSprite->getContentSize().height * 3 / 8);
+	m_cardCost_label->setColor(Color3B::BLACK);
+	m_cardCost_label->setPosition(bg_cost_circle->getPosition());
 	this->addChild(m_cardCost_label);
 
 	//创建Body、Shapre、Fixture

@@ -27,9 +27,10 @@ bool Player::init(std::string picPath, int max_hp, int armor, int power, int agi
 	}
 	//³õÊ¼»¯ÖÇÁ¦Label
 	m_magic_label = Label::create("Magic: 0", "Arical", 16);
+	m_magic_label->setColor(Color3B::BLACK);
 	m_magic_label->setAnchorPoint(Point(1.0, 0.5));
 	m_magic_label->setPosition(
-		-m_sprite->getContentSize().width / 2 - m_power_label->getContentSize().width / 2 - 2 , 
+		-m_sprite->getContentSize().width * m_sprite->getScale() / 2 - m_power_label->getContentSize().width / 2 - 2 ,
 		m_agility_label->getPositionY() - m_agility_label->getContentSize().height);
 	this->addChild(m_magic_label, 3);
 	

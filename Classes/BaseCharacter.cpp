@@ -23,34 +23,45 @@ bool BaseCharacter::init(std::string picPath, int max_hp, bool isEnemy , int arm
 	if (!Node::init()) {
 		return false;
 	}
+	Size visibleSize = _director->getVisibleSize();
+
 	m_isEnemy = isEnemy;
+
+	Size character_size = m_isEnemy ? game_enemy_size : game_player_size;
 
 	//初始化人物精灵
 	m_sprite = Sprite::create(picPath);
+	float xScale = visibleSize.width * character_size.width / m_sprite->getContentSize().width;
+	float yScale = visibleSize.height * character_size.height / m_sprite->getContentSize().height;
+	m_sprite->setScale(xScale < yScale ? xScale : yScale);
 	m_sprite->setPosition(0, 0);
 	this->addChild(m_sprite, 5);
 
 	//初始化HP_Label
 	m_hp_label = Label::create("0 /0", "Arical", 16);
-	m_hp_label->setPosition(0, -m_sprite->getContentSize().height / 2 - 10);
+	m_hp_label->setColor(Color3B::BLACK);
+	m_hp_label->setPosition(0, -m_sprite->getContentSize().height * m_sprite->getScale() / 2 - 10);
 	this->addChild(m_hp_label, 3);
 
 	//初始化护甲Label
 	m_armor_label = Label::create("Armor: 0", "Arical", 20);
-	m_armor_label->setPosition(0, m_sprite->getContentSize().height / 2 + 20);
+	m_armor_label->setColor(Color3B::BLACK);
+	m_armor_label->setPosition(0, m_sprite->getContentSize().height * m_sprite->getScale() / 2 + 20);
 	this->addChild(m_armor_label, 3);
 
 	//初始化力量、敏捷、智力Label
 	m_power_label = Label::create("Power: 0", "Arical", 16);
+	m_power_label->setColor(Color3B::BLACK);
 	m_power_label->setAnchorPoint(Vec2(1.0, 0.5));
 	m_power_label->setPosition(
-		-m_sprite->getContentSize().width / 2 - m_power_label->getContentSize().width / 2 - 2, 0);
+		-m_sprite->getContentSize().width* m_sprite->getScale() / 2 - m_power_label->getContentSize().width / 2 - 2, 0);
 	this->addChild(m_power_label, 3);
 
 	m_agility_label = Label::create("Agility: 0", "Arical", 16);
+	m_agility_label->setColor(Color3B::BLACK);
 	m_agility_label->setAnchorPoint(Point(1.0, 0.5));
 	m_agility_label->setPosition(
-		-m_sprite->getContentSize().width / 2 - m_power_label->getContentSize().width / 2 - 2, m_power_label->getPositionY() - m_power_label->getContentSize().height);
+		-m_sprite->getContentSize().width * m_sprite->getScale() / 2 - m_power_label->getContentSize().width / 2 - 2, m_power_label->getPositionY() - m_power_label->getContentSize().height);
 	this->addChild(m_agility_label, 3);
 
 	this->changeMaxHP(max_hp);
@@ -182,7 +193,7 @@ void BaseCharacter::updateStateLayout() {
 
 		BaseState* state = m_state_vector.at(i);
 		state->setPosition( 
-			-m_sprite->getContentSize().width /2 + column * 32  , 
+			-m_sprite->getContentSize().width * m_sprite->getScale() /2 + ( m_sprite->getContentSize().width * m_sprite->getScale() - 32 * STATE_NUM_PER_ROW) / 2 + column * 32  ,
 			m_hp_label->getPositionY() - m_hp_label->getContentSize().width/2 -  row * 32);
 	}
 

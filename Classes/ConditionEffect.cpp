@@ -139,10 +139,10 @@ void ConditionEffect::effect_(bool flag, Target& target) {
 			for (Player* player : target.players) {
 				switch (m_result) {
 					case Property::Health:
-						if (m_defaultResult > 0) {
+						if (*m_defaultResult * m_ratio_of_result > 0) {
 							player->heal(flag ? (m_ratio_of_result * (*m_defaultResult)) : *m_defaultResult);
 						}
-						else if (m_defaultResult < 0) {
+						else if (*m_defaultResult * m_ratio_of_result < 0 ) {
 							player->hurt(flag ? -(m_ratio_of_result * (*m_defaultResult)) : -*m_defaultResult);
 						}
 						break;
@@ -165,10 +165,10 @@ void ConditionEffect::effect_(bool flag, Target& target) {
 			for (BaseEnemy* enemy : target.enemys) {
 				switch (m_result) {
 				case Property::Health:
-					if (m_defaultResult > 0) {
+					if (*m_defaultResult* m_ratio_of_result > 0 ) {
 						enemy->heal(flag ? (m_ratio_of_result * (*m_defaultResult)) : *m_defaultResult);
 					}
-					else if (m_defaultResult < 0) {
+					else if (*m_defaultResult * m_ratio_of_result< 0 ) {
 						enemy->hurt(flag ? -(m_ratio_of_result * (*m_defaultResult)) : -*m_defaultResult);
 					}
 					break;
@@ -189,10 +189,10 @@ void ConditionEffect::effect_(bool flag, Target& target) {
 void ConditionEffect::effect_single(bool flag, BaseCharacter* charcter) {
 	switch (m_result) {
 		case Property::Health:
-			if (m_defaultResult > 0) {
+			if ( *m_defaultResult * m_ratio_of_result  > 0) {
 				charcter->heal(flag ? (m_ratio_of_result * (*m_defaultResult)) : *m_defaultResult);
 			}
-			else if (m_defaultResult < 0) {
+			else if (*m_defaultResult * m_ratio_of_result < 0  ) {
 				charcter->hurt(flag ? -(m_ratio_of_result * (*m_defaultResult)) : -*m_defaultResult);
 			}
 			break;

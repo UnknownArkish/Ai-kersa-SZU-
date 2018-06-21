@@ -69,6 +69,7 @@ bool BaseCharacter::init(std::string picPath, int max_hp, bool isEnemy , int arm
 	this->changePower(power);
 	this->changeAgility(agility);
 
+	this->setCascadeOpacityEnabled(true);
 	return true;
 }
 

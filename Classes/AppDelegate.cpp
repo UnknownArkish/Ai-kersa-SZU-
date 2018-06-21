@@ -6,7 +6,14 @@
 #include"GameSceneDemo.h"
 #include"TestCardDiplayScene.h"
 #include"GameStartScene.h"
-#include"DialogScene.h"
+
+#include"audio/include/AudioEngine.h"
+#include "spine/spine-cocos2dx.h"
+#include "spine/spine.h"
+
+using namespace cocos2d::experimental;
+using namespace spine;
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -35,6 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLViewImpl::createWithRect("Ai'kersa", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+		//glview->setCursorVisible(false); // ½ûÖ¹ÏÔÊ¾Êó±ê ... 
         director->setOpenGLView(glview);
     }
 
@@ -56,8 +64,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // run
     director->runWithScene(scene);
 
-	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sound/start_scene_bgm.mp3");
+	AudioEngine::preload("audio/boss1.mp3");
 	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sound/chapter0_bgm.mp3");
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("audio/boss1.mp3");
 
     return true;
 }

@@ -117,11 +117,13 @@ void AIManager::createIntent( int round ) {
 }
 void AIManager::effect_when_round_end( int round ) {
 	for (BaseEnemy* enemy : m_enemys) {
-		BaseBehaviour* behaviour = ((BaseBehaviour*)enemy->getChildByName("Intent"));
-		Target target = ((GameSceneDemo*)this->getParent())->getTarget(behaviour);
-		behaviour->effect(target);
-
 		enemy->effect_when_round_end();	//¸üĞÂµĞÈË×´Ì¬
+
+		if (!enemy->isDead()) {
+			BaseBehaviour* behaviour = ((BaseBehaviour*)enemy->getChildByName("Intent"));
+			Target target = ((GameSceneDemo*)this->getParent())->getTarget(behaviour);
+			behaviour->effect(target);
+		}
 	}
 	createIntent( round );
 }

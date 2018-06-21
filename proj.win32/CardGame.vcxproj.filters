@@ -64,6 +64,9 @@
     <Filter Include="src\scene\chapter">
       <UniqueIdentifier>{987f9431-c54c-4c04-b864-087e5ea2d38a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\util\tool">
+      <UniqueIdentifier>{4211e99d-dd0f-4fc0-9fad-4eb33c3c1261}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Chapter1Scene.cpp">
       <Filter>src\scene\chapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCShake.cpp">
+      <Filter>src\util\tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Chapter1Scene.h">
       <Filter>src\scene\chapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCShake.h">
+      <Filter>src\util\tool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

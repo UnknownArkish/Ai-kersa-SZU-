@@ -7,30 +7,31 @@
 #include"BaseCard.h"
 #include"CardSystem.h"
 
+#define LINE_SPRITE_NUMBER 10 // 卡牌拉线上的图标个数
+
 class CardLayer_ :public Layer {
 public:
 	static CardLayer_* create(std::vector<CardID>& cardIDs);
 
-
 	BaseCard* drawFromCardLibrary();	//从抽牌库获取卡牌
 	BaseCard* drawFromCardLibraryAtID(int index);	//从下标为index的抽牌库抽取卡牌
 	BaseCard* drawFromDisLibrary();	//从弃牌库获取卡牌
-	BaseCard* drawFromDisLibraryAtID( int index );	//从下标为index的弃牌库抽取卡牌
+	BaseCard* drawFromDisLibraryAtID(int index);	//从下标为index的弃牌库抽取卡牌
 
 	bool drawCard();	//从牌库中抽取卡牌
 	bool drawCard(int num);	//抽牌库中抽取num张卡牌
 	bool drawCardAtID(int index);
 	void drawFull();
 
-	bool discard( bool isDestory );	//随机丢弃手牌
-	bool discardAtID(int index , bool isDestory);	//丢弃手牌
-	void discardAll( bool isDestory );	//丢弃所有手牌
+	bool discard(bool isDestory);	//随机丢弃手牌
+	bool discardAtID(int index, bool isDestory);	//丢弃手牌
+	void discardAll(bool isDestory);	//丢弃所有手牌
 
 	bool drawFromDisLibraryToHand();	//（随机）从弃牌库中抽取卡牌到手牌
-	bool drawFromDisLibraryToHand( int num );	//（随机）从弃牌库中抽取num张卡牌到手牌
+	bool drawFromDisLibraryToHand(int num);	//（随机）从弃牌库中抽取num张卡牌到手牌
 	bool drawFromDisLibraryToCardLibrary();	//（随机）从弃牌库中抽取卡牌到抽牌库
-	bool drawFromDisLibraryToHandAtID( int index );	//（随机）从弃牌库中抽取卡牌到手牌
-	bool drawFromDisLibraryToCardLibraryatID( int index );	//（随机）从弃牌库中抽取卡牌到抽牌库
+	bool drawFromDisLibraryToHandAtID(int index);	//（随机）从弃牌库中抽取卡牌到手牌
+	bool drawFromDisLibraryToCardLibraryatID(int index);	//（随机）从弃牌库中抽取卡牌到抽牌库
 
 	bool addCardToHandCard(BaseCard*& card);	//额外增加卡牌的函数
 	void addCardToCardLibrary(BaseCard*& card);
@@ -41,6 +42,7 @@ public:
 	int getSizeOfDisLibrary() { return m_discard_library.size(); }
 
 	bool getIsSelect() { return m_isSelect; }
+	BaseCard* getCurrentCard() { return m_current_card; }
 
 	void effect_when_round_end();
 private:
@@ -56,6 +58,15 @@ private:
 	virtual void onTouchEnded(Touch* pTouch, Event* pEvent);
 
 	virtual void onMouseMove(EventMouse* pEvent);	//用于检测鼠标停放在卡牌贴图上时的函数
+
+	void callfunc(BaseCard * card, Target target);
+
+	void enemy_shake_action_callback();
+
+	Vec2* getCubicBezierPoints(const Vec2 &origin, const Vec2 &control1,
+		const Vec2 &control2, const Vec2 &destination, unsigned int segments);
+	void clearLine();
+
 private:
 	Size m_visibleSize;
 
@@ -72,11 +83,22 @@ private:
 
 	BaseCard* m_current_card;	//当前选择卡牌
 
-	int m_draw_when_round_end = 2;	//结束时抽取卡牌数，对牌库作用的Effect可以对这个产生影响，从而改变每回合抽牌数
+	int m_draw_when_round_end = 5;	//结束时抽取卡牌数，对牌库作用的Effect可以对这个产生影响，从而改变每回合抽牌数
 
-	bool m_isHovor;	//是否悬浮
+	bool m_isHovor;	    //是否悬浮
 	bool m_isSelect;	//是否选择了一张卡牌
 
+	bool m_isCurrentCanMove = true; // 所选卡牌可否移动
+	bool m_isSendCard = false;  // 发送卡牌阶段不能对卡牌区有任何变动...
+
+	BaseCard * m_oldSelectCard = NULL; // 之前选择的卡牌,使用这个是为了防止鼠标在同一张卡牌移动时发出连续的声音...
+
+	Vec2 endPoint;
+	Vec2 control1;
+	Vec2 control2;
+	bool m_isEnemyCanShake = true;
+
+	Sprite ** line = new Sprite*[LINE_SPRITE_NUMBER];
 };
 
 #include"GameSceneDemo.h"

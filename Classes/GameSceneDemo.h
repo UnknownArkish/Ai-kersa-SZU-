@@ -25,9 +25,16 @@ public:
 
 	Target getTarget(BaseCard* card);	//根据卡牌返回Target
 	Target getTarget(BaseBehaviour* behaviour);	//根据TargetNeed返回Target
+
+	Vector<BaseEnemy*> m_enemys;
+	BaseEnemy* m_current_enemy;	//保存当前目标对象
+
 	int getCurrentRound() { return m_current_rounds; }
+
+	void explode_on_enemy(Target target);
+	void play_music(std::string name);
 private:
-	void endRound( Ref* pRef );
+	void endRound(Ref* pRef);
 	void updateCostLabel();
 
 	virtual bool init();
@@ -38,20 +45,24 @@ private:
 	virtual void onTouchEnded(Touch* pTouch, Event* pEvent);
 
 	virtual void onMouseMove(EventMouse* pEvent);	//用于检测鼠标停放在敌人贴图上时的函数
+
+	virtual void onEnterTransitionDidFinish();
+	virtual void onExitTransitionDidStart();
 private:
 	int m_current_rounds;
 
 	Size m_visibleSize;
-
 	CardLayer_* m_card_layer;
-
 	Player * m_player;
-	Vector<BaseEnemy*> m_enemys;
-	BaseEnemy* m_current_enemy;	//保存当前目标对象
-
 	AIManager* m_ai_manager;
 
 	Label* m_cost_label;
+
+	LayerColor* m_mask_layer;
+
+	int m_bgm_id;
+	//Vector<BaseEnemy*> m_enemys;
+	//BaseEnemy* m_current_enemy;	//保存当前目标对象
 };
 
 #endif // !_GAME_SCENE_DEMO_H_

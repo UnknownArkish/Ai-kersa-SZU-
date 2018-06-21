@@ -61,6 +61,7 @@ public:
 	void effect_when_round_end();	//回合结束之后调用的函数
 
 	bool isEnemy() { return m_isEnemy; }
+	bool isDead() { return m_isDead; }
 
 	virtual Size getContentSize() { return m_sprite->getContentSize(); }	//override
 	virtual Rect getBoundingBox() { 

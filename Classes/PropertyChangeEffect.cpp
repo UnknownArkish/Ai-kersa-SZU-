@@ -27,10 +27,10 @@ void PropertyChangeEffect::effect( Target& target ) {
 			for (Player* player : target.players) {
 				switch (m_property) {
 					case Property::Health:
-						if (m_property_change > 0) {
+						if (*m_property_change > 0) {
 							player->heal(*m_property_change);
 						}
-						else if(m_property_change < 0){
+						else if(*m_property_change < 0){
 							player->hurt(-*m_property_change);
 						}
 						break;
@@ -86,10 +86,10 @@ void PropertyChangeEffect::effect( Target& target ) {
 			for (BaseEnemy* enemy : target.enemys) {
 				switch (m_property) {
 					case Property::Health:
-						if (m_property_change > 0) {
+						if (*m_property_change > 0) {
 							enemy->heal(*m_property_change);
 						}
-						else if (m_property_change < 0) {
+						else if (*m_property_change < 0) {
 							enemy->hurt(-*m_property_change);
 						}
 						break;

@@ -98,7 +98,7 @@ BaseCard* CardSystem::createCardByID(CardID id) {
 			card->updateCardInfo();
 			card->m_target_need = { 1 , 0 , 0 };
 
-			card->addEffect(StateEffect::create(TargetType::TO_PLAYER, StateType::Property_Change, "state/inner_strength.png", name, info, 3, true, false, true, Property::Power, new int(1)));
+			card->addEffect(StateEffect::create(TargetType::TO_PLAYER, StateType::Property_Change, "state/blessing_of_prince_daughter.png", name, info, 3, true, false, true, Property::Power, new int(1)));
 			break;
 
 		case CardID::Health_Potion:
@@ -149,7 +149,7 @@ BaseCard* CardSystem::createCardByID(CardID id) {
 			card->m_target_need = { 1 , 0 , 0 };
 
 			card->addEffect(PropertyChangeEffect::create(TargetType::TO_PLAYER, Property::Power, new int(0)));
-			card->addEffect(StateEffect::create(TargetType::TO_PLAYER, StateType::Property_Change, "state/inner_strength.png", name, info, 1, false, true, false, Property::Power, new int(0)));
+			card->addEffect(StateEffect::create(TargetType::TO_PLAYER, StateType::Property_Change, "state/burst_limit.png", name, info, 1, false, true, false, Property::Power, new int(0)));
 			break;
 
 		case CardID::Tie:
@@ -158,7 +158,7 @@ BaseCard* CardSystem::createCardByID(CardID id) {
 			card->m_target_need = { 0 , 1 , 0 };
 
 			card->addEffect(PropertyChangeEffect::create(TargetType::TO_ENEMY, Property::Power, new int(-6)));
-			card->addEffect(StateEffect::create(TargetType::TO_ENEMY,StateType::Property_Change , "state/inner_strength.png" , name , info , 1 ,false , true , false , Property::Power, new int(-6)));
+			card->addEffect(StateEffect::create(TargetType::TO_ENEMY,StateType::Property_Change , "state/tie.png" , name , info , 1 ,false , true , false , Property::Power, new int(-6)));
 			break;
 
 		case CardID::Magic_Book:
@@ -199,11 +199,12 @@ BaseCard* CardSystem::createCardByID(CardID id) {
 			break;
 
 		case CardID::Backflip:
-			card->m_Property = card->m_pre_property = { 0 , 0 , 0 };
+			card->m_Property = card->m_pre_property = { 0 , +3 , 0 };
 			card->updateCardInfo();
-			card->m_target_need = { 0 , 0 , 1 };
+			card->m_target_need = { 1 , 0 , 1 };
 
 			card->addEffect(DrawCardEffect::create(TargetType::TO_CARD_LAYER, 4, DrawFrom::From_Card_Library));
+			card->addEffect(PropertyChangeEffect::create(TargetType::TO_PLAYER, Property::Armor, &card->m_Property.armor_number));
 			break;
 	}
 

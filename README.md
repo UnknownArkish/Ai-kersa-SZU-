@@ -2,12 +2,12 @@
 此仓库是我们小组在计算机游戏开发课程（深圳大学）的大作业
 
 ## 开发平台
-win32
-## 开发引擎及平台
-- cocos2d-x
-- c/c++
+- win32
+## 开发引擎
+- cocos2d-x with c/ c++
+- Visual Studio 2017
 ## 开发者
-- 谢少辉
+- <a href="https://github.com/junior-2016">谢少辉</a>
 - 杨迪
 - 黄兆铭
 ## License & Release

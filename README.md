@@ -9,7 +9,7 @@
 ## 开发者
 - <a href="https://github.com/junior-2016">谢少辉</a>
 - 杨迪
-- 黄兆铭
+- <a href="https://github.com/UnknownArkish">黄兆铭</a>
 ## License & Release
 见<a href="https://github.com/UnknownArkish/CardGame/blob/master/LICENSE">LICENSE.md</a>
 ## 如何使用
